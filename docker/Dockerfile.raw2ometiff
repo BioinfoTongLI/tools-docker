@@ -1,6 +1,6 @@
-FROM ubuntu:20.04
+FROM continuumio/miniconda3:latest
 
-ENV version="0.3.1"
+ENV version="0.5.0"
 ENV version_suffix="rc1"
 
 RUN apt-get update && \
@@ -8,7 +8,4 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN wget https://github.com/glencoesoftware/raw2ometiff/releases/download/v${version}${version_suffix}/raw2ometiff-${version}-${version_suffix}.zip && \
-	unzip raw2ometiff-${version}-${version_suffix}.zip -d /opt/
-
-ENV PATH=/opt/raw2ometiff-0.3.1-rc1/bin/:${PATH}
+RUN conda install -c ome raw2ometiff==${version}
