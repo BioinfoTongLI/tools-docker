@@ -8,3 +8,6 @@
 
 version="0.5.0"
 docker build -t bioinfotongli/raw2ometiff:${version} -f Dockerfile.raw2ometiff .
+docker build -t bioinfotongli/bioformats2raw:0.9.1 -f Dockerfile.bf2raw .
+docker push bioinfotongli/raw2ometiff:${version}
+docker push bioinfotongli/bioformats2raw:0.9.1
